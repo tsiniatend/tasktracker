@@ -1,0 +1,211 @@
+/* the background hero template i can lay my video on top off*/
+.hero{ /* GO OVER */
+  width: auto;
+  height: 100vh;
+/* add a background color for contrast with video text gives it a vibe */
+  background-image: linear-gradient(rgba(12,3,51,0.3),rgba(12,3,51,0.3));
+  position: relative;
+  padding: 0;
+  display: flex;
+/*   align-items: center;
+  justify-content: center; */
+}
+/* Z INDEX always for the backgroud grey to be visible with the video but i still cant figure out how to get the video the right size for the page, ask for help asap*/
+.back-video{
+   position: absolute;
+  background-position: center;
+  background-size: cover;
+   /* right: 0;
+   bottom: 0; */
+   z-index: -1;
+}
+
+@media (min-aspect-ratio: 16/9){ /* GO OVER */
+    .back-video{
+        width: 100%;
+        height: auto;
+    }
+}
+@media (max-aspect-ratio: 16/9){
+    .back-video{
+        width: auto;
+        height: 100%;
+    }
+}
+.sr{
+	top: 80%;
+}
+
+:root {
+	--dark: #BA55d3;
+	--darker: #9370db;
+	--darkest: #663399;
+	--grey: #7B68EE;
+	--pink: #9400D3;
+	--purple: #8B5CF6;
+	--light: #EEE;
+	/* --dark: #374151;
+	--darker: #1F2937;
+	--darkest: #111827;
+	--grey: #6B7280;
+	--pink: #EC4899;
+	--purple: #8B5CF6;
+	--light: #EEE; */
+}
+
+* {
+	margin: 0;
+	box-sizing: border-box;
+	font-family: "Fira sans", sans-serif;
+}
+/* use flex display then in order to positon use flex-direction: CSS property sets how flex items are placed in the flex container defining the main axis and the direction*/ 
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	color: #FFF;
+	background-color: var(--dark);
+}
+/* To keep the content aligned center on larger screens we set the max widths and padding */ 
+header {
+	padding: 2rem 1rem;
+	max-width: 800px;
+	width: 100%;
+	margin: 0 auto;
+}
+
+header h1{ 
+	font-size: 4rem;
+	font-weight: 300;
+	color: var(--grey);
+	margin-bottom: 1rem;
+	transform: uppercase; 
+}
+
+#new-task-form {
+	display: flex;;
+}
+/* lets make all our buttons and input areas clear with no outline */ 
+input, button {
+	appearance: none;
+	border: none;
+	outline: none;
+	background: none;
+}
+/* flex item will grow or shrink to fit the space available in its flex container. */
+
+#inpute {
+	flex: 1 1 0%;
+	background-color: var(--darker);
+	padding: 1rem;
+	border-radius: 1rem;
+	margin-right: 1rem;
+	color: var(--light);
+	font-size: 1.25rem;
+}
+
+/* the color of our input values */
+#inpute::placeholder {
+	color: var(--grey);
+}
+
+/* Our add task tag, edit the button, we add a radiant color then use webkit clip and color to allow it to be seen */
+
+#new-task-submit {
+	color: var(--pink);
+	font-size: 1.25rem;
+	font-weight: 630;
+  background-color: #de4256;
+background-image: linear-gradient(315deg, #de4256 0%, #b78e51 74%);
+/* 	background-image: linear-gradient(to right, var(--pink), var(--purple)); */
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	cursor: pointer;
+	transition: 0.4s;
+}
+/* hover effect allows for visual change  */
+#new-task-submit:hover {
+	opacity: 0.8;
+}
+
+#new-task-submit:active {
+	opacity: 0.8;
+}
+
+/* contain our main   */
+main {
+	flex: 1 1 0%;
+	max-width: 800px;
+	width: 100%;
+	margin: 0 auto;
+}
+
+.task-list {
+	padding: 1rem;
+}
+
+.task-list h2 {
+	font-size: 5rem;
+	font-weight: 600;
+	color: var(--grey);
+	margin-bottom: 1rem;
+	transform: uppercase;
+}
+
+/* Our submited task need to be formated to be visuall appealing with enough space */
+#tasks .task {
+	display: flex;
+	justify-content: space-between;
+	background-color: var(--darkest);
+	padding: 1rem;
+	border-radius: 1rem;
+	margin-bottom: 1rem;
+}
+
+.task .content {
+	flex: 1 1 0%;
+}
+
+.task .content .text {
+	color: var(--light);
+	font-size: 1.125rem;
+	width: 100%;
+	display: block;
+	transition: 0.4s;
+}
+/* working indicator  */
+.task .content .text:not(:read-only) {
+	color: var(--pink);
+}
+
+.task .actions {
+	display: flex;
+	margin: 0 -0.5rem;
+}
+
+.task .actions button {
+	cursor: pointer;
+	margin: 0 0.5rem;
+	font-size: 1.125rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	transition: 0.4s;
+}
+
+.task .actions button:hover {
+	opacity: 0.8;
+}
+
+.task .actions button:active {
+	opacity: 0.6;
+}
+
+.task .actions .edit {
+	background-image: linear-gradient(to right, var(--pink), var(--purple));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.task .actions .delete {
+	color: black;
+}
